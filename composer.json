@@ -1,5 +1,5 @@
 {
-    "name": "votong/laravel-activitylog",
+    "name": "votong/laravel-activitylog-mongodb",
     "description": "A very simple activity logger to monitor the users of your website or application",
     "keywords": [
         "votong",
@@ -8,19 +8,19 @@
         "activity",
         "laravel"
     ],
-    "homepage": "https://github.com/votong/activitylog",
+    "homepage": "https://github.com/votong/laravel-activitylog-mongodb",
     "license": "MIT",
     "authors": [
         {
             "name": "Freek Van der Herten",
-            "email": "freek@votong.be",
-            "homepage": "https://votong.be",
+            "email": "freek@spatie.be",
+            "homepage": "https://spatie.be",
             "role": "Developer"
         },
         {
             "name": "Sebastian De Deyne",
-            "email": "sebastian@votong.be",
-            "homepage": "https://votong.be",
+            "email": "sebastian@spatie.be",
+            "homepage": "https://spatie.be",
             "role": "Developer"
         },
         {
