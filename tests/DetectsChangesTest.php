@@ -1,25 +1,25 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Closure;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
-use Spatie\Activitylog\Contracts\LoggablePipe;
-use Spatie\Activitylog\EventLogBag;
-use Spatie\Activitylog\LogBatch;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Models\Activity;
-use Spatie\Activitylog\Test\Casts\IntervalCasts;
-use Spatie\Activitylog\Test\Models\Article;
-use Spatie\Activitylog\Test\Models\User;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Votong\Activitylog\Contracts\LoggablePipe;
+use Votong\Activitylog\EventLogBag;
+use Votong\Activitylog\LogBatch;
+use Votong\Activitylog\LogOptions;
+use Votong\Activitylog\Models\Activity;
+use Votong\Activitylog\Test\Casts\IntervalCasts;
+use Votong\Activitylog\Test\Models\Article;
+use Votong\Activitylog\Test\Models\User;
+use Votong\Activitylog\Traits\LogsActivity;
 
 class DetectsChangesTest extends TestCase
 {
-    /** @var \Spatie\Activitylog\Test\Models\Article|\Spatie\Activitylog\Traits\LogsActivity */
+    /** @var \Votong\Activitylog\Test\Models\Article|\Votong\Activitylog\Traits\LogsActivity */
     protected $article;
 
     public function setUp(): void

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace Votong\Activitylog;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class EventLogBag
 {

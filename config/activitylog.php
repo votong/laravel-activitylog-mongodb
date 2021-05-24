@@ -32,10 +32,10 @@ return [
 
     /*
      * This model will be used to log activity.
-     * It should be implements the Spatie\Activitylog\Contracts\Activity interface
-     * and extend Illuminate\Database\Eloquent\Model.
+     * It should be implements the Votong\Activitylog\Contracts\Activity interface
+     * and extend Jenssegers\Mongodb\Eloquent\Model.
      */
-    'activity_model' => \Spatie\Activitylog\Models\Activity::class,
+    'activity_model' => \Votong\Activitylog\Models\Activity::class,
 
     /*
      * This is the name of the table that will be created by the migration and

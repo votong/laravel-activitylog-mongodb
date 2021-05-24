@@ -1,22 +1,22 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Models\Activity;
-use Spatie\Activitylog\Test\Models\Article;
-use Spatie\Activitylog\Test\Models\Issue733;
-use Spatie\Activitylog\Test\Models\User;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Votong\Activitylog\LogOptions;
+use Votong\Activitylog\Models\Activity;
+use Votong\Activitylog\Test\Models\Article;
+use Votong\Activitylog\Test\Models\Issue733;
+use Votong\Activitylog\Test\Models\User;
+use Votong\Activitylog\Traits\LogsActivity;
 
 class LogsActivityTest extends TestCase
 {
-    /** @var \Spatie\Activitylog\Test\Models\Article|\Spatie\Activitylog\Traits\LogsActivity */
+    /** @var \Votong\Activitylog\Test\Models\Article|\Votong\Activitylog\Traits\LogsActivity */
     protected $article;
-    /** @var \Spatie\Activitylog\Test\Models\User|\Spatie\Activitylog\Traits\LogsActivity */
+    /** @var \Votong\Activitylog\Test\Models\User|\Votong\Activitylog\Traits\LogsActivity */
     protected $user;
 
     public function setUp(): void

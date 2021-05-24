@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
 use Auth;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Collection;
-use Spatie\Activitylog\Exceptions\CouldNotLogActivity;
-use Spatie\Activitylog\Facades\CauserResolver;
-use Spatie\Activitylog\Models\Activity;
-use Spatie\Activitylog\Test\Models\Article;
-use Spatie\Activitylog\Test\Models\User;
+use Votong\Activitylog\Exceptions\CouldNotLogActivity;
+use Votong\Activitylog\Facades\CauserResolver;
+use Votong\Activitylog\Models\Activity;
+use Votong\Activitylog\Test\Models\Article;
+use Votong\Activitylog\Test\Models\User;
 
 class ActivityLoggerTest extends TestCase
 {

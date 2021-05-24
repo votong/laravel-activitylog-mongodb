@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
-use Spatie\Activitylog\Exceptions\InvalidConfiguration;
-use Spatie\Activitylog\Test\Models\Activity;
-use Spatie\Activitylog\Test\Models\AnotherInvalidActivity;
-use Spatie\Activitylog\Test\Models\InvalidActivity;
+use Votong\Activitylog\Exceptions\InvalidConfiguration;
+use Votong\Activitylog\Test\Models\Activity;
+use Votong\Activitylog\Test\Models\AnotherInvalidActivity;
+use Votong\Activitylog\Test\Models\InvalidActivity;
 
 class CustomActivityModelTest extends TestCase
 {

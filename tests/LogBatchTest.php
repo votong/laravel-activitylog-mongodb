@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
-use Spatie\Activitylog\Facades\LogBatch;
+use Votong\Activitylog\Facades\LogBatch;
 
 class LogBatchTest extends TestCase
 {

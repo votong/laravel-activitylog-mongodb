@@ -3,7 +3,7 @@ title: Introduction
 weight: 1
 ---
 
-The `spatie/laravel-activitylog` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events. All activity will be stored in the `activity_log` table.
+The `votong/laravel-activitylog` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events. All activity will be stored in the `activity_log` table.
 
 Here's a litte demo of how you can use it:
 
@@ -11,7 +11,7 @@ Here's a litte demo of how you can use it:
 activity()->log('Look mum, I logged something');
 ```
 
-You can retrieve all activity using the `Spatie\Activitylog\Models\Activity` model.
+You can retrieve all activity using the `Votong\Activitylog\Models\Activity` model.
 
 ```php
 Activity::all();
@@ -65,10 +65,10 @@ Calling `$activity->changes` will return this array:
 ## We have badges!
 
 <section class="article_badges">
-    <a href="https://packagist.org/packages/spatie/laravel-activitylog"><img src="https://img.shields.io/badge/packagist-spatie/laravel-activitylog.svg?style=flat-square" alt="spatie/laravel-activitylog"></a>
-    <a href="https://packagist.org/packages/spatie/laravel-activitylog"><img src="https://img.shields.io/packagist/v/spatie/laravel-activitylog.svg?style=flat-square" alt="Latest Version on Packagist"></a>
-    <a href="https://github.com/spatie/laravel-activitylog/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a>
-    <a href="https://travis-ci.org/spatie/laravel-activitylog"><img src="https://img.shields.io/travis/spatie/laravel-activitylog/master.svg?style=flat-square" alt="Build Status"></a>
-    <a href="https://scrutinizer-ci.com/g/spatie/laravel-activitylog"><img src="https://img.shields.io/scrutinizer/g/spatie/laravel-activitylog.svg?style=flat-square" alt="Quality Score"></a>
-    <a href="https://packagist.org/packages/spatie/laravel-activitylog"><img src="https://img.shields.io/packagist/dt/spatie/laravel-activitylog.svg?style=flat-square" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/votong/laravel-activitylog"><img src="https://img.shields.io/badge/packagist-votong/laravel-activitylog.svg?style=flat-square" alt="votong/laravel-activitylog"></a>
+    <a href="https://packagist.org/packages/votong/laravel-activitylog"><img src="https://img.shields.io/packagist/v/votong/laravel-activitylog.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+    <a href="https://github.com/votong/laravel-activitylog/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a>
+    <a href="https://travis-ci.org/votong/laravel-activitylog"><img src="https://img.shields.io/travis/votong/laravel-activitylog/master.svg?style=flat-square" alt="Build Status"></a>
+    <a href="https://scrutinizer-ci.com/g/votong/laravel-activitylog"><img src="https://img.shields.io/scrutinizer/g/votong/laravel-activitylog.svg?style=flat-square" alt="Quality Score"></a>
+    <a href="https://packagist.org/packages/votong/laravel-activitylog"><img src="https://img.shields.io/packagist/dt/votong/laravel-activitylog.svg?style=flat-square" alt="Total Downloads"></a>
 </section>

@@ -6,7 +6,7 @@ weight: 4
 The package can be installed via composer:
 
 ```bash
-composer require spatie/laravel-activitylog
+composer require votong/laravel-activitylog
 ```
 
 The package will automatically register the service provider.
@@ -18,7 +18,7 @@ After you've configured everything you should clear the application config cache
 You can publish the migration with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
+php artisan vendor:publish --provider="Votong\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
 ```
 
 After the migration has been published you can create the `activity_log` table by running the migrations:
@@ -30,7 +30,7 @@ php artisan migrate
 You can optionally publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-config"
+php artisan vendor:publish --provider="Votong\Activitylog\ActivitylogServiceProvider" --tag="activitylog-config"
 ```
 
 This is the contents of the published config file:
@@ -68,10 +68,10 @@ return [
 
     /*
      * This model will be used to log activity.
-     * It should be implements the Spatie\Activitylog\Contracts\Activity interface
-     * and extend Illuminate\Database\Eloquent\Model.
+     * It should be implements the Votong\Activitylog\Contracts\Activity interface
+     * and extend Jenssegers\Mongodb\Eloquent\Model.
      */
-    'activity_model' => \Spatie\Activitylog\Models\Activity::class,
+    'activity_model' => \Votong\Activitylog\Models\Activity::class,
 
     /*
      * This is the name of the table that will be created by the migration and

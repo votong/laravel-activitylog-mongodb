@@ -1,13 +1,13 @@
 <?php
 
-namespace Spatie\Activitylog\Test\Models;
+namespace Votong\Activitylog\Test\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Spatie\Activitylog\Contracts\Activity as ActivityContract;
+use Votong\Activitylog\Contracts\Activity as ActivityContract;
 
 class AnotherInvalidActivity implements ActivityContract
 {
@@ -74,7 +74,7 @@ class AnotherInvalidActivity implements ActivityContract
      * Scope a query to only include activities by a given causer.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $causer
+     * @param \Jenssegers\Mongodb\Eloquent\Model $causer
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -89,7 +89,7 @@ class AnotherInvalidActivity implements ActivityContract
      * Scope a query to only include activities for a given subject.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $subject
+     * @param \Jenssegers\Mongodb\Eloquent\Model $subject
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

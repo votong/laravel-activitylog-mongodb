@@ -1,36 +1,36 @@
 # Changelog
 
-All notable changes to `spatie/laravel-activitylog` will be documented in this file
+All notable changes to `votong/laravel-activitylog` will be documented in this file
 
 ## 4.0.0 - 2021-05-04
 
-PR: [#787](https://github.com/spatie/laravel-activitylog/pull/787)  
+PR: [#787](https://github.com/votong/laravel-activitylog/pull/787)  
 Special thanks to [Ahmed Nagi](https://github.com/nagi1).
 
 - Drop Laravel 6 and 7 support.
 - Drop PHP 7.x support.
 - Add `LogOptions` configuration object to replace all configuration properties.
-- Add ability to batch activity logs [#560](https://github.com/spatie/laravel-activitylog/issues/560)
+- Add ability to batch activity logs [#560](https://github.com/votong/laravel-activitylog/issues/560)
 - Add Pipeline to customize logged changes data.
-  - Deep diff array/JSON sub-keys and respect for only-dirty, no-empty ... [#692](https://github.com/spatie/laravel-activitylog/issues/692) using new pipeline. See implementation in the tests.
-- Implement a `CauserResolver` to define causer for current runtime [#582](https://github.com/spatie/laravel-activitylog/issues/582).
+  - Deep diff array/JSON sub-keys and respect for only-dirty, no-empty ... [#692](https://github.com/votong/laravel-activitylog/issues/692) using new pipeline. See implementation in the tests.
+- Implement a `CauserResolver` to define causer for current runtime [#582](https://github.com/votong/laravel-activitylog/issues/582).
 
 ## 3.17.0 - 2021-03-02
 
-- drop PHP 7.2 support - [#855](https://github.com/spatie/laravel-activitylog/pull/855)
+- drop PHP 7.2 support - [#855](https://github.com/votong/laravel-activitylog/pull/855)
 
 ## 3.16.1 - 2020-11-03
 
-- add PHP 8.0 support - [#806](https://github.com/spatie/laravel-activitylog/pull/806)
+- add PHP 8.0 support - [#806](https://github.com/votong/laravel-activitylog/pull/806)
 
 ## 3.16.0 - 2020-09-16
 
-- use `nullableMorphs()` in default migration - [#707](https://github.com/spatie/laravel-activitylog/pull/707)
-- add support for snake and camel cased related model attribute logging - [#721](https://github.com/spatie/laravel-activitylog/pull/721)
+- use `nullableMorphs()` in default migration - [#707](https://github.com/votong/laravel-activitylog/pull/707)
+- add support for snake and camel cased related model attribute logging - [#721](https://github.com/votong/laravel-activitylog/pull/721)
 
 ## 3.15.0 - 2020-09-14
 
-- Add multiple/chained relation attribute logging support - [#784](https://github.com/spatie/laravel-activitylog/pull/784)
+- Add multiple/chained relation attribute logging support - [#784](https://github.com/votong/laravel-activitylog/pull/784)
 
 ## 3.14.3 - 2020-09-09
 
@@ -48,27 +48,27 @@ Special thanks to [Ahmed Nagi](https://github.com/nagi1).
 
 Please use `v3.14.1` instead - this release is breaking because of the new column. There is also a `v4.0.0-rc.1` release that equals to this one.
 
-- add `\Spatie\Activitylog\ActivityLogger::event()` method and column [#702](https://github.com/spatie/laravel-activitylog/pull/702)
+- add `\Votong\Activitylog\ActivityLogger::event()` method and column [#702](https://github.com/votong/laravel-activitylog/pull/702)
 
 ## 3.13.0 - 2020-03-13
 
-- add `\Spatie\Activitylog\ActivityLogger::withoutLogs()` method [#695](https://github.com/spatie/laravel-activitylog/pull/695)
+- add `\Votong\Activitylog\ActivityLogger::withoutLogs()` method [#695](https://github.com/votong/laravel-activitylog/pull/695)
 
 ## 3.12.0 - 2020-03-13
 
-- respect custom date casts [#627](https://github.com/spatie/laravel-activitylog/pull/627)
+- respect custom date casts [#627](https://github.com/votong/laravel-activitylog/pull/627)
 
 ## 3.11.4 - 2020-03-11
 
-- remove `spatie/string` dependency [#690](https://github.com/spatie/laravel-activitylog/pull/690)
+- remove `votong/string` dependency [#690](https://github.com/votong/laravel-activitylog/pull/690)
 
 ## 3.11.3 - 2020-03-10
 
-- fix performance issue around global vs model log disabling [#682](https://github.com/spatie/laravel-activitylog/pull/682)
+- fix performance issue around global vs model log disabling [#682](https://github.com/votong/laravel-activitylog/pull/682)
 
 ## 3.11.2 - 2020-03-10
 
-- fix Laravel 7 array/json casted attributes [#680](https://github.com/spatie/laravel-activitylog/pull/680)
+- fix Laravel 7 array/json casted attributes [#680](https://github.com/votong/laravel-activitylog/pull/680)
 
 ## 3.11.1 - 2020-03-02
 
@@ -80,7 +80,7 @@ Please use `v3.14.1` instead - this release is breaking because of the new colum
 
 ## 3.10.0 - 2020-02-22
 
-- add ability to manually set created at date - [#622](https://github.com/spatie/laravel-activitylog/pull/622)
+- add ability to manually set created at date - [#622](https://github.com/votong/laravel-activitylog/pull/622)
 
 ## 3.9.2 - 2020-02-04
 
@@ -88,18 +88,18 @@ Please use `v3.14.1` instead - this release is breaking because of the new colum
 
 ## 3.9.1 - 2019-10-15
 
-- fix default database connection - [#616](https://github.com/spatie/laravel-activitylog/pull/616)
+- fix default database connection - [#616](https://github.com/votong/laravel-activitylog/pull/616)
 
 ## 3.9.0 - 2019-10-06
 
-- add anonymous causer with `null` value - [#605](https://github.com/spatie/laravel-activitylog/pull/605)
-- fix relationships to allow snake case keys - [#602](https://github.com/spatie/laravel-activitylog/pull/602)
-- add JOSN sub-key attribute logging - [#601](https://github.com/spatie/laravel-activitylog/pull/601)
+- add anonymous causer with `null` value - [#605](https://github.com/votong/laravel-activitylog/pull/605)
+- fix relationships to allow snake case keys - [#602](https://github.com/votong/laravel-activitylog/pull/602)
+- add JOSN sub-key attribute logging - [#601](https://github.com/votong/laravel-activitylog/pull/601)
 
 ## 3.8.0 - 2019-09-04
 
 - add support for Laravel 6
-- change fields with value `null` to be strictly compared when logging dirty fields [#453](https://github.com/spatie/laravel-activitylog/pull/453)
+- change fields with value `null` to be strictly compared when logging dirty fields [#453](https://github.com/votong/laravel-activitylog/pull/453)
 - add composite indexes for subject and causer to migration
 
 ## 3.7.2 - 2019-08-28
@@ -112,37 +112,37 @@ Please use `v3.14.1` instead - this release is breaking because of the new colum
 
 ## 3.7.0 - 2019-07-23
 
-- add database connection to configuration `activitylog.database_connection` and `ACTIVITY_LOGGER_DB_CONNECTION` env var [#568](https://github.com/spatie/laravel-activitylog/pull/568)
+- add database connection to configuration `activitylog.database_connection` and `ACTIVITY_LOGGER_DB_CONNECTION` env var [#568](https://github.com/votong/laravel-activitylog/pull/568)
 
 ## 3.6.3 - 2019-07-23
 
-- fix deprecated `array_` helper [#569](https://github.com/spatie/laravel-activitylog/pull/569)
+- fix deprecated `array_` helper [#569](https://github.com/votong/laravel-activitylog/pull/569)
 
 ## 3.6.2 - 2019-07-16
 
-- fix existing description [#563](https://github.com/spatie/laravel-activitylog/pull/563)
+- fix existing description [#563](https://github.com/votong/laravel-activitylog/pull/563)
 
 ## 3.6.1 - 2019-05-29
 
-- fix nullable date attributes [#546](https://github.com/spatie/laravel-activitylog/pull/546)
+- fix nullable date attributes [#546](https://github.com/votong/laravel-activitylog/pull/546)
 
 ## 3.6.0 - 2019-05-28
 
-- update `properties` column type from `text` to `json` [#525](https://github.com/spatie/laravel-activitylog/pull/525)
-- update `subject_id` and `causer_id` column type from `integer` to `big_integer` and `unsigned` [#527](https://github.com/spatie/laravel-activitylog/pull/527)
-- fix attribute getter support in `DetectsChanges` trait [#534](https://github.com/spatie/laravel-activitylog/pull/534)
-- fix old attributes retrieval in `DetectsChanges` trait [#537](https://github.com/spatie/laravel-activitylog/pull/537)
-- clean up old attributes in `DetectsChanges` trait [#538](https://github.com/spatie/laravel-activitylog/pull/538)
+- update `properties` column type from `text` to `json` [#525](https://github.com/votong/laravel-activitylog/pull/525)
+- update `subject_id` and `causer_id` column type from `integer` to `big_integer` and `unsigned` [#527](https://github.com/votong/laravel-activitylog/pull/527)
+- fix attribute getter support in `DetectsChanges` trait [#534](https://github.com/votong/laravel-activitylog/pull/534)
+- fix old attributes retrieval in `DetectsChanges` trait [#537](https://github.com/votong/laravel-activitylog/pull/537)
+- clean up old attributes in `DetectsChanges` trait [#538](https://github.com/votong/laravel-activitylog/pull/538)
 
 ## 3.5.0 - 2019-04-15
 
-- add days option to clean command [#497](https://github.com/spatie/laravel-activitylog/pull/497)
-- add `LogsActivity::$submitEmptyLogs` [#514](https://github.com/spatie/laravel-activitylog/pull/514)
+- add days option to clean command [#497](https://github.com/votong/laravel-activitylog/pull/497)
+- add `LogsActivity::$submitEmptyLogs` [#514](https://github.com/votong/laravel-activitylog/pull/514)
 
 ## 3.4.0 - 2019-04-09
 
-- use `Illuminate\Contracts\Config\Repository` instead of `Illuminate\Config\Repository` [#505](https://github.com/spatie/laravel-activitylog/pull/505)
-- fix `logChanges()` [#512](https://github.com/spatie/laravel-activitylog/pull/512)
+- use `Illuminate\Contracts\Config\Repository` instead of `Illuminate\Config\Repository` [#505](https://github.com/votong/laravel-activitylog/pull/505)
+- fix `logChanges()` [#512](https://github.com/votong/laravel-activitylog/pull/512)
 
 ## 3.3.0 - 2019-04-08
 

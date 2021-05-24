@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
-use Spatie\Activitylog\Models\Activity;
-use Spatie\Activitylog\Test\Models\CustomDatabaseConnectionOnActivityModel;
+use Votong\Activitylog\Models\Activity;
+use Votong\Activitylog\Test\Models\CustomDatabaseConnectionOnActivityModel;
 
 class CustomDatabaseConnectionActivityModelTest extends TestCase
 {

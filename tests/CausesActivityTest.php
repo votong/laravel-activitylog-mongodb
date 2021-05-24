@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
-use Spatie\Activitylog\Test\Models\User;
+use Votong\Activitylog\Test\Models\User;
 
 class CausesActivityTest extends TestCase
 {

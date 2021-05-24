@@ -1,22 +1,22 @@
 <?php
 
-namespace Spatie\Activitylog\Traits;
+namespace Votong\Activitylog\Traits;
 
 use Carbon\CarbonInterval;
 use DateInterval;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Spatie\Activitylog\ActivityLogger;
-use Spatie\Activitylog\ActivitylogServiceProvider;
-use Spatie\Activitylog\ActivityLogStatus;
-use Spatie\Activitylog\Contracts\LoggablePipe;
-use Spatie\Activitylog\EventLogBag;
-use Spatie\Activitylog\LogOptions;
+use Votong\Activitylog\ActivityLogger;
+use Votong\Activitylog\ActivitylogServiceProvider;
+use Votong\Activitylog\ActivityLogStatus;
+use Votong\Activitylog\Contracts\LoggablePipe;
+use Votong\Activitylog\EventLogBag;
+use Votong\Activitylog\LogOptions;
 
 trait LogsActivity
 {

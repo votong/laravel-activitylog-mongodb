@@ -12,7 +12,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Spatie Test Suite">
+        <testsuite name="Votong Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

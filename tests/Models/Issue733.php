@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Activitylog\Test\Models;
+namespace Votong\Activitylog\Test\Models;
 
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Votong\Activitylog\LogOptions;
+use Votong\Activitylog\Traits\LogsActivity;
 
 class Issue733 extends Article
 {

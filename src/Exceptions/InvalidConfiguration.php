@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\Activitylog\Exceptions;
+namespace Votong\Activitylog\Exceptions;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Contracts\Activity;
+use Jenssegers\Mongodb\Eloquent\Model;
+use Votong\Activitylog\Contracts\Activity;
 
 class InvalidConfiguration extends Exception
 {

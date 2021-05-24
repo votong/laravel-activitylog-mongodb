@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace Votong\Activitylog;
 
 use Closure;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Exceptions\CouldNotLogActivity;
+use Jenssegers\Mongodb\Eloquent\Model;
+use Votong\Activitylog\Exceptions\CouldNotLogActivity;
 
 class CauserResolver
 {

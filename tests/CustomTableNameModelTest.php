@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Activitylog\Test;
+namespace Votong\Activitylog\Test;
 
-use Spatie\Activitylog\Models\Activity;
-use Spatie\Activitylog\Test\Models\CustomTableNameOnActivityModel;
+use Votong\Activitylog\Models\Activity;
+use Votong\Activitylog\Test\Models\CustomTableNameOnActivityModel;
 
 class CustomTableNameModelTest extends TestCase
 {
