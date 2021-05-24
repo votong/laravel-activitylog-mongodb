@@ -2,12 +2,12 @@
 
 # Log activity inside your Laravel app
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/votong/laravel-activitylog.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/votong/laravel-activitylog/run-tests?label=tests)](https://github.com/votong/laravel-activitylog/actions/workflows/run-tests.yml)
-[![Check & fix styling](https://github.com/votong/laravel-activitylog/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/votong/laravel-activitylog/actions/workflows/php-cs-fixer.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/votong/laravel-activitylog.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/votong/laravel-activitylog-mongodb.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog-mongodb)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/votong/laravel-activitylog-mongodb/run-tests?label=tests)](https://github.com/votong/laravel-activitylog-mongodb/actions/workflows/run-tests.yml)
+[![Check & fix styling](https://github.com/votong/laravel-activitylog-mongodb/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/votong/laravel-activitylog-mongodb/actions/workflows/php-cs-fixer.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/votong/laravel-activitylog-mongodb.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog-mongodb)
 
-The `votong/laravel-activitylog` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events.
+The `votong/laravel-activitylog-mongodb` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events.
 The Package stores all activity in the `activity_log` table.
 
 It is inspired from [laravel-activitylog](https://github.com/spatie/laravel-activitylog). Same code same everything but it is compatible with [laravel-mongodb](https://github.com/jenssegers/laravel-mongodb)
@@ -41,7 +41,7 @@ $lastLoggedActivity->description; //returns 'Look, I logged something'
 ```
 
 
-Here's an example on [event logging](https://docs.votong.be/laravel-activitylog/v4/advanced-usage/logging-model-events).
+Here's an example on [event logging](https://docs.spatie.be/laravel-activitylog/v4/advanced-usage/logging-model-events).
 
 ```php
 $newsItem->name = 'updated name';
@@ -71,15 +71,15 @@ Calling `$activity->changes()` will return this array:
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-activitylog.jpg?t=1" width="419px" />](https://votong.be/github-ad-click/laravel-activitylog)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-activitylog.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-activitylog)
 
-We invest a lot of resources into creating [best in class open source packages](https://votong.be/open-source). You can support us by [buying one of our paid products](https://votong.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://votong.be/about-us). We publish all received postcards on [our virtual postcard wall](https://votong.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Documentation
 
-You'll find the documentation on [https://docs.votong.be/laravel-activitylog](https://docs.votong.be/laravel-activitylog).
+You'll find the documentation on [https://docs.spatie.be/laravel-activitylog](https://docs.spatie.be/laravel-activitylog).
 
 Find yourself stuck using the package? Found a bug? Do you have general questions or suggestions for improving the activity log? Feel free to [create an issue on GitHub](https://github.com/votong/laravel-activitylog/issues), we'll try to address it as soon as possible.
 
@@ -131,7 +131,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email freek@votong.be instead of using the issue tracker.
+If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
 ## Credits
 
