@@ -1,22 +1,22 @@
 <?php
 
-namespace Votong\Activitylog\Traits;
+namespace Spatie\Activitylog\Traits;
 
 use Carbon\CarbonInterval;
 use DateInterval;
-use Jenssegers\Mongodb\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Votong\Activitylog\ActivityLogger;
-use Votong\Activitylog\ActivitylogServiceProvider;
-use Votong\Activitylog\ActivityLogStatus;
-use Votong\Activitylog\Contracts\LoggablePipe;
-use Votong\Activitylog\EventLogBag;
-use Votong\Activitylog\LogOptions;
+use Spatie\Activitylog\ActivityLogger;
+use Spatie\Activitylog\ActivitylogServiceProvider;
+use Spatie\Activitylog\ActivityLogStatus;
+use Spatie\Activitylog\Contracts\LoggablePipe;
+use Spatie\Activitylog\EventLogBag;
+use Spatie\Activitylog\LogOptions;
 
 trait LogsActivity
 {
@@ -24,7 +24,7 @@ trait LogsActivity
 
     protected array $oldAttributes = [];
 
-    protected LogOptions $activitylogOptions;
+    protected ?LogOptions $activitylogOptions;
 
     public bool $enableLoggingModelsEvents = true;
 
@@ -70,9 +70,9 @@ trait LogsActivity
                 // each pipe receives the event carrier bag with changes and the model in
                 // question every pipe should manipulate new and old attributes.
                 $event = app(Pipeline::class)
-                ->send(new EventLogBag($eventName, $model, $changes, $model->activitylogOptions))
-                ->through(static::$changesPipes)
-                ->thenReturn();
+                    ->send(new EventLogBag($eventName, $model, $changes, $model->activitylogOptions))
+                    ->through(static::$changesPipes)
+                    ->thenReturn();
 
                 // Actual logging
                 $logger = app(ActivityLogger::class)
@@ -86,6 +86,9 @@ trait LogsActivity
                 }
 
                 $logger->log($description);
+
+                // Reset log options so the model can be serialized.
+                $model->activitylogOptions = null;
             });
         });
     }
@@ -128,7 +131,7 @@ trait LogsActivity
         return $eventName;
     }
 
-    public function getLogNameToUse(): string
+    public function getLogNameToUse(): ?string
     {
         if (! empty($this->activitylogOptions->logName)) {
             return $this->activitylogOptions->logName;
@@ -171,14 +174,25 @@ trait LogsActivity
             return true;
         }
 
-        if (Arr::has($this->getDirty(), 'deleted_at')) {
-            if ($this->getDirty()['deleted_at'] === null) {
-                return false;
-            }
+        // Do not log update event if the model is restoring
+        if ($this->isRestoring()) {
+            return false;
         }
 
         // Do not log update event if only ignored attributes are changed.
         return (bool) count(Arr::except($this->getDirty(), $this->activitylogOptions->dontLogIfAttributesChangedOnly));
+    }
+
+    /**
+     * Determines if the model is restoring.
+     **/
+    protected function isRestoring(): bool
+    {
+        $deletedAtColumn = method_exists($this, 'getDeletedAtColumn')
+            ? $this->getDeletedAtColumn()
+            : 'deleted_at';
+
+        return $this->isDirty($deletedAtColumn) && count($this->getDirty()) === 1;
     }
 
     /**
@@ -288,7 +302,7 @@ trait LogsActivity
                         return $new === $old ? 0 : 1;
                     }
 
-                    // Handels Date intervels comparsons since php cannot use spaceship
+                    // Handles Date interval comparisons since php cannot use spaceship
                     // Operator to compare them and will throw ErrorException.
                     if ($old instanceof DateInterval) {
                         return CarbonInterval::make($old)->equalTo($new) ? 0 : 1;
@@ -335,7 +349,9 @@ trait LogsActivity
                 continue;
             }
 
-            $changes[$attribute] = $model->getAttribute($attribute);
+            $changes[$attribute] = in_array($attribute, $model->activitylogOptions->attributeRawValues)
+                ? $model->getAttributeFromArray($attribute)
+                : $model->getAttribute($attribute);
 
             if (is_null($changes[$attribute])) {
                 continue;
@@ -350,7 +366,17 @@ trait LogsActivity
             if ($model->hasCast($attribute)) {
                 $cast = $model->getCasts()[$attribute];
 
-                if ($model->isCustomDateTimeCast($cast)) {
+                if ($model->isEnumCastable($attribute)) {
+                    try {
+                        $changes[$attribute] = $model->getStorableEnumValue($changes[$attribute]);
+                    } catch (\ArgumentCountError $e) {
+                        // In Laravel 11, this method has an extra argument
+                        // https://github.com/laravel/framework/pull/47465
+                        $changes[$attribute] = $model->getStorableEnumValue($cast, $changes[$attribute]);
+                    }
+                }
+
+                if ($model->isCustomDateTimeCast($cast) || $model->isImmutableCustomDateTimeCast($cast)) {
                     $changes[$attribute] = $model->asDateTime($changes[$attribute])->format(explode(':', $cast, 2)[1]);
                 }
             }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Votong\Activitylog\Contracts;
+namespace Spatie\Activitylog\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
-use Jenssegers\Mongodb\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
 
@@ -13,7 +13,7 @@ interface Activity
 
     public function causer(): MorphTo;
 
-    public function getExtraProperty(string $propertyName): mixed;
+    public function getExtraProperty(string $propertyName, mixed $defaultValue): mixed;
 
     public function changes(): Collection;
 

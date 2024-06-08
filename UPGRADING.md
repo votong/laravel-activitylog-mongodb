@@ -1,5 +1,16 @@
 ## From v3 to v4
 
+``` bash
+composer require spatie/laravel-activitylog "^4.0.0"
+```
+
+### Publish migrations & migrate new tables
+
+``` bash
+php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
+php artisan migrate
+```
+
 ### Model event Logging
 
 - All models now need to define a `getActivitylogOptions()` method to configure and return the models options as a `LogOptions` instance.
@@ -13,7 +24,7 @@
 
 ## From v2 to v3
 
-- if you are using a custom `Activity` model, you should let it implement the new `Votong\Activitylog\Contracts\Activity` interface
+- if you are using a custom `Activity` model, you should let it implement the new `Spatie\Activitylog\Contracts\Activity` interface
 - the preferred way to get changes on an `Activity` model is through the `changes` property instead of the `changes()` function. Change all usages from
 `$activity->changes()` to `$activity->changes`
 - the `activity` relation of the `CausesActivity` trait has been renamed to `actions`.  Rename all uses from `$user->activity` to `$user->actions`

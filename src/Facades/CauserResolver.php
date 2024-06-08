@@ -1,16 +1,16 @@
 <?php
 
-namespace Votong\Activitylog\Facades;
+namespace Spatie\Activitylog\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Votong\Activitylog\CauserResolver as ActivitylogCauserResolver;
+use Spatie\Activitylog\CauserResolver as ActivitylogCauserResolver;
 
 /**
- * @method static \Jenssegers\Mongodb\Eloquent\Model|null resolve(\Jenssegers\Mongodb\Eloquent\Model|int|string|null $subject = null)
- * @method static \Votong\Activitylog\CauserResolver resolveUsing(\Closure $callback)
- * @method static \Votong\Activitylog\CauserResolver setCauser(\Jenssegers\Mongodb\Eloquent\Model|null $causer)
+ * @method static \MongoDB\Laravel\Eloquent\Model|null resolve(\MongoDB\Laravel\Eloquent\Model|int|string|null $subject = null)
+ * @method static \Spatie\Activitylog\CauserResolver resolveUsing(\Closure $callback)
+ * @method static \Spatie\Activitylog\CauserResolver setCauser(\MongoDB\Laravel\Eloquent\Model|null $causer)
  *
- * @see \Votong\Activitylog\CauserResolver
+ * @see \Spatie\Activitylog\CauserResolver
  */
 class CauserResolver extends Facade
 {

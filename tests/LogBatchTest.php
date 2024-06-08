@@ -1,118 +1,126 @@
 <?php
 
-namespace Votong\Activitylog\Test;
+use Spatie\Activitylog\Facades\LogBatch;
+use Illuminate\Support\Str;
 
-use Votong\Activitylog\Facades\LogBatch;
+it('generates uuid after start and end batch properely', function () {
+    LogBatch::startBatch();
+    $uuid = LogBatch::getUuid();
+    LogBatch::endBatch();
 
-class LogBatchTest extends TestCase
-{
-    /** @test */
-    public function it_generates_uuid_after_start_and_end_batch_properely()
-    {
-        LogBatch::startBatch();
-        $uuid = LogBatch::getUuid();
-        LogBatch::endBatch();
+    expect(LogBatch::isopen())->toBeFalse();
 
-        $this->assertFalse(LogBatch::isopen());
+    expect($uuid)->toBeString();
+});
 
-        $this->assertIsString($uuid);
-    }
+it('returns null uuid after end batch properely', function () {
+    LogBatch::startBatch();
+    $uuid = LogBatch::getUuid();
+    LogBatch::endBatch();
 
-    /** @test */
-    public function it_returns_null_uuid_after_end_batch_properely()
-    {
-        LogBatch::startBatch();
-        $uuid = LogBatch::getUuid();
-        LogBatch::endBatch();
+    expect(LogBatch::isopen())->toBeFalse();
+    $this->assertNotNull($uuid);
+    expect(LogBatch::getUuid())->toBeNull();
+});
 
-        $this->assertFalse(LogBatch::isopen());
-        $this->assertNotNull($uuid);
-        $this->assertNull(LogBatch::getUuid());
-    }
+it('generates a new uuid after starting new batch properly', function () {
+    LogBatch::startBatch();
+    $firstBatchUuid = LogBatch::getUuid();
+    LogBatch::endBatch();
 
-    /** @test */
-    public function it_generates_a_new_uuid_after_starting_new_batch_properly()
-    {
-        LogBatch::startBatch();
-        $firstBatchUuid = LogBatch::getUuid();
-        LogBatch::endBatch();
+    LogBatch::startBatch();
 
-        LogBatch::startBatch();
+    LogBatch::startBatch();
+    $secondBatchUuid = LogBatch::getUuid();
+    LogBatch::endBatch();
 
-        LogBatch::startBatch();
-        $secondBatchUuid = LogBatch::getUuid();
-        LogBatch::endBatch();
+    expect(LogBatch::isopen())->toBeTrue();
+    $this->assertNotNull($firstBatchUuid);
+    $this->assertNotNull($secondBatchUuid);
 
-        $this->assertTrue(LogBatch::isopen());
-        $this->assertNotNull($firstBatchUuid);
-        $this->assertNotNull($secondBatchUuid);
+    $this->assertNotEquals($firstBatchUuid, $secondBatchUuid);
+});
 
-        $this->assertNotEquals($firstBatchUuid, $secondBatchUuid);
-    }
+it('will not generate new uuid if start already started batch', function () {
+    LogBatch::startBatch();
 
-    /** @test */
-    public function it_will_not_generate_new_uuid_if_start_already_started_batch()
-    {
-        LogBatch::startBatch();
+    $firstUuid = LogBatch::getUuid();
 
-        $firstUuid = LogBatch::getUuid();
+    LogBatch::startBatch();
 
-        LogBatch::startBatch();
+    $secondUuid = LogBatch::getUuid();
 
-        $secondUuid = LogBatch::getUuid();
+    LogBatch::endBatch();
 
-        LogBatch::endBatch();
+    expect(LogBatch::isopen())->toBeTrue();
 
-        $this->assertTrue(LogBatch::isopen());
+    expect($secondUuid)->toEqual($firstUuid);
+});
 
-        $this->assertEquals($firstUuid, $secondUuid);
-    }
+it('will not generate uuid if end batch before starting', function () {
+    LogBatch::endBatch();
+    $uuid = LogBatch::getUuid();
 
-    /** @test */
-    public function it_will_not_generate_uuid_if_end_batch_before_starting()
-    {
-        LogBatch::endBatch();
-        $uuid = LogBatch::getUuid();
+    LogBatch::startBatch();
 
-        LogBatch::startBatch();
+    expect($uuid)->toBeNull();
+});
 
-        $this->assertNull($uuid);
-    }
+it('can set uuid and start a batch', function () {
+    $uuid = Str::uuid();
 
-    /** @test */
-    public function it_will_not_return_null_uuid_if_end_batch_that_started_twice()
-    {
-        LogBatch::startBatch();
-        $firstUuid = LogBatch::getUuid();
+    LogBatch::setBatch($uuid);
+    expect(LogBatch::isOpen())->toBeTrue();
+    expect(LogBatch::getUuid())->toEqual($uuid);
 
-        LogBatch::startBatch();
+    LogBatch::endBatch();
+    expect(LogBatch::isOpen())->toBeFalse();
+});
 
-        LogBatch::endBatch();
+it('can set uuid for already started batch', function () {
+    $uuid = Str::uuid();
 
-        $notNullUuid = LogBatch::getUuid();
+    LogBatch::startBatch();
+    expect(LogBatch::isOpen())->toBeTrue();
+    $this->assertNotEquals($uuid, LogBatch::getUuid());
 
-        $this->assertNotNull($firstUuid);
-        $this->assertNotNull($notNullUuid);
+    LogBatch::setBatch($uuid);
+    expect(LogBatch::isOpen())->toBeTrue();
+    expect(LogBatch::getUuid())->toEqual($uuid);
 
-        $this->assertSame($firstUuid, $notNullUuid);
-    }
+    LogBatch::endBatch();
+    expect(LogBatch::isOpen())->toBeFalse();
+});
 
-    /** @test */
-    public function it_will_return_null_uuid_if_end_batch_that_started_twice_properly()
-    {
-        LogBatch::startBatch();
-        $firstUuid = LogBatch::getUuid();
+it('will not return null uuid if end batch that started twice', function () {
+    LogBatch::startBatch();
+    $firstUuid = LogBatch::getUuid();
 
-        LogBatch::startBatch();
+    LogBatch::startBatch();
 
-        LogBatch::endBatch();
-        LogBatch::endBatch();
+    LogBatch::endBatch();
 
-        $nullUuid = LogBatch::getUuid();
+    $notNullUuid = LogBatch::getUuid();
 
-        $this->assertNotNull($firstUuid);
-        $this->assertNull($nullUuid);
+    $this->assertNotNull($firstUuid);
+    $this->assertNotNull($notNullUuid);
 
-        $this->assertNotSame($firstUuid, $nullUuid);
-    }
-}
+    expect($notNullUuid)->toBe($firstUuid);
+});
+
+it('will return null uuid if end batch that started twice properly', function () {
+    LogBatch::startBatch();
+    $firstUuid = LogBatch::getUuid();
+
+    LogBatch::startBatch();
+
+    LogBatch::endBatch();
+    LogBatch::endBatch();
+
+    $nullUuid = LogBatch::getUuid();
+
+    $this->assertNotNull($firstUuid);
+    expect($nullUuid)->toBeNull();
+
+    $this->assertNotSame($firstUuid, $nullUuid);
+});

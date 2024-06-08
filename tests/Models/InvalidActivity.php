@@ -1,8 +1,8 @@
 <?php
 
-namespace Votong\Activitylog\Test\Models;
+namespace Spatie\Activitylog\Test\Models;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class InvalidActivity extends Model
 {

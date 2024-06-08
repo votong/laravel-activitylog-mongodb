@@ -8,9 +8,9 @@ Customization of how your models will be logged is controlled when implementing 
 The most basic example of an Activity logged model would be:
 
 ```php
-use Jenssegers\Mongodb\Eloquent\Model;
-use Votong\Activitylog\Traits\LogsActivity;
-use Votong\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class YourModel extends Model
 {
@@ -41,6 +41,8 @@ public array $logAttributes = [];
 public array $logExceptAttributes = [];
 
 public array $dontLogIfAttributesChangedOnly = [];
+
+public array $attributeRawValues = [];
 
 public ?Closure $descriptionForEvent = null;
 ```
@@ -163,6 +165,15 @@ public function submitEmptyLogs(): LogOption;
  * Customize log name
  */
 public function useLogName(string $logName): LogOption;
+```
+
+### useAttributeRawValues
+
+```php
+/**
+ * Skip using mutators for these attributes when logged
+ */
+public function useAttributeRawValues(array $attributes): LogOption;
 ```
 
 ### setDescriptionForEvent

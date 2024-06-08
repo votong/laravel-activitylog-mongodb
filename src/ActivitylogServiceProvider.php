@@ -1,12 +1,12 @@
 <?php
 
-namespace Votong\Activitylog;
+namespace Spatie\Activitylog;
 
-use Jenssegers\Mongodb\Eloquent\Model;
-use Votong\Activitylog\Contracts\Activity;
-use Votong\Activitylog\Contracts\Activity as ActivityContract;
-use Votong\Activitylog\Exceptions\InvalidConfiguration;
-use Votong\Activitylog\Models\Activity as ActivityModel;
+use MongoDB\Laravel\Eloquent\Model;
+use Spatie\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Contracts\Activity as ActivityContract;
+use Spatie\Activitylog\Exceptions\InvalidConfiguration;
+use Spatie\Activitylog\Models\Activity as ActivityModel;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,9 +18,9 @@ class ActivitylogServiceProvider extends PackageServiceProvider
         ->name('laravel-activitylog')
         ->hasConfigFile('activitylog')
         ->hasMigrations([
-            'CreateActivityLogTable',
-            'AddEventColumnToActivityLogTable',
-            'AddBatchUuidColumnToActivityLogTable',
+            'create_activity_log_table',
+            'add_event_column_to_activity_log_table',
+            'add_batch_uuid_column_to_activity_log_table',
         ])
         ->hasCommand(CleanActivitylogCommand::class);
     }
@@ -29,11 +29,11 @@ class ActivitylogServiceProvider extends PackageServiceProvider
     {
         $this->app->bind(ActivityLogger::class);
 
-        $this->app->singleton(LogBatch::class);
+        $this->app->scoped(LogBatch::class);
 
-        $this->app->singleton(CauserResolver::class);
+        $this->app->scoped(CauserResolver::class);
 
-        $this->app->singleton(ActivityLogStatus::class);
+        $this->app->scoped(ActivityLogStatus::class);
     }
 
     public static function determineActivityModel(): string

@@ -8,8 +8,8 @@ In some cases you may want to manipulate/control changes array, v4 made this pos
 ```php
 // RemoveKeyFromLogChangesPipe.php
 
-use Votong\Activitylog\Contracts\LoggablePipe;
-use Votong\Activitylog\EventLogBag;
+use Spatie\Activitylog\Contracts\LoggablePipe;
+use Spatie\Activitylog\EventLogBag;
 
 class RemoveKeyFromLogChangesPipe implements LoggablePipe
 {
@@ -17,7 +17,7 @@ class RemoveKeyFromLogChangesPipe implements LoggablePipe
 
     public function handle(EventLogBag $event, Closure $next): EventLogBag
     {
-        Arr::forget($event->changes, ["attributes.{$this->felid}", "old.{$this->felid}"]);
+        Arr::forget($event->changes, ["attributes.{$this->field}", "old.{$this->field}"]);
 
         return $next($event);
     }
@@ -27,7 +27,7 @@ class RemoveKeyFromLogChangesPipe implements LoggablePipe
 ```php
 // ... in your controller/job/middleware
 
-NewsItem::addLogPipe(new RemoveKeyFromLogChangesPipe('name'));
+NewsItem::addLogChange(new RemoveKeyFromLogChangesPipe('name'));
 
 $article = NewsItem::create(['name' => 'new article', 'text' => 'new article text']);
 $article->update(['name' => 'update article', 'text' => 'update article text']);
@@ -49,7 +49,7 @@ By adding i.e. `RemoveKeyFromLogChangesPipe` pipe every time log NewsItem is cha
 
 ## Add pipes
 
-Every pipe should implement `Votong\Activitylog\Contracts\LoggablePipe` that enforces `handle()` method that will receive `Votong\Activitylog\EventLogBag` and the next pipe. Your pipe must return the next pipe passing the event applying your changes `retrun $next($event)`.
+Every pipe should implement `Spatie\Activitylog\Contracts\LoggablePipe` that enforces `handle()` method that will receive `Spatie\Activitylog\EventLogBag` and the next pipe. Your pipe must return the next pipe passing the event applying your changes `return $next($event)`.
 
 ```php
 
@@ -64,13 +64,17 @@ class YourPipe implements LoggablePipe
 }
 
 ```
-
+Then you can apply this when calling your model with:
 ```php
-YourModel::addLogPipe(new YourPipe);
+YourModel::addLogChange(new YourPipe);
 ```
 
-## Useful use cases
+However, you may wish to ensure it's always called within the model and as such you could apply it during model boot with the following:
 
-### Deep diff JSON sub-keys and respect for only-dirty and no-empty
+```php
+protected static function booted(): void
+{
+    static::addLogChange(new YourPipe);
+}
+```
 
-Refere to `it_deep_diff_check_json_field` test.

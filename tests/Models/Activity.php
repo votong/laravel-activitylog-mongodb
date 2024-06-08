@@ -1,13 +1,13 @@
 <?php
 
-namespace Votong\Activitylog\Test\Models;
+namespace Spatie\Activitylog\Test\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Votong\Activitylog\Contracts\Activity as ActivityContract;
+use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 
 class Activity extends Model implements ActivityContract
 {
@@ -40,9 +40,9 @@ class Activity extends Model implements ActivityContract
         return $this->morphTo();
     }
 
-    public function getExtraProperty(string $propertyName): mixed
+    public function getExtraProperty(string $propertyName, mixed $defaultValue = null): mixed
     {
-        return Arr::get($this->properties->toArray(), $propertyName);
+        return Arr::get($this->properties->toArray(), $propertyName, $defaultValue);
     }
 
     public function changes(): Collection

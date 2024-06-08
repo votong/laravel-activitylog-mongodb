@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog\Test;
+namespace Spatie\Activitylog\Test;
 
 use AddBatchUuidColumnToActivityLogTable;
 use AddEventColumnToActivityLogTable;
@@ -9,14 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Votong\Activitylog\ActivitylogServiceProvider;
-use Votong\Activitylog\Models\Activity;
-use Votong\Activitylog\Test\Models\Article;
-use Votong\Activitylog\Test\Models\User;
+use Spatie\Activitylog\ActivitylogServiceProvider;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Test\Models\Article;
+use Spatie\Activitylog\Test\Models\User;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -55,9 +55,9 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function migrateActivityLogTable()
     {
-        require_once __DIR__.'/../database/migrations/CreateActivityLogTable.php.stub';
-        require_once __DIR__.'/../database/migrations/AddEventColumnToActivityLogTable.php.stub';
-        require_once __DIR__.'/../database/migrations/AddBatchUuidColumnToActivityLogTable.php.stub';
+        require_once __DIR__.'/../database/migrations/create_activity_log_table.php.stub';
+        require_once __DIR__.'/../database/migrations/add_event_column_to_activity_log_table.php.stub';
+        require_once __DIR__.'/../database/migrations/add_batch_uuid_column_to_activity_log_table.php.stub';
 
         (new CreateActivityLogTable())->up();
         (new AddEventColumnToActivityLogTable())->up();
@@ -80,6 +80,7 @@ abstract class TestCase extends OrchestraTestCase
                     $table->text('json')->nullable();
                     $table->string('interval')->nullable();
                     $table->decimal('price')->nullable();
+                    $table->string('status')->nullable();
                 }
             });
         });
@@ -102,5 +103,25 @@ abstract class TestCase extends OrchestraTestCase
     public function markTestAsPassed(): void
     {
         $this->assertTrue(true);
+    }
+
+    public function createArticle(): Article
+    {
+        $article = new $this->article();
+        $article->name = 'my name';
+        $article->save();
+
+        return $article;
+    }
+
+    public function loginWithFakeUser()
+    {
+        $user = new $this->user();
+
+        $user::find(1);
+
+        $this->be($user);
+
+        return $user;
     }
 }

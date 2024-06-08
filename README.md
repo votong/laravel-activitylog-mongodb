@@ -2,15 +2,13 @@
 
 # Log activity inside your Laravel app
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/votong/laravel-activitylog-mongodb.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog-mongodb)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/votong/laravel-activitylog-mongodb/run-tests?label=tests)](https://github.com/votong/laravel-activitylog-mongodb/actions/workflows/run-tests.yml)
-[![Check & fix styling](https://github.com/votong/laravel-activitylog-mongodb/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/votong/laravel-activitylog-mongodb/actions/workflows/php-cs-fixer.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/votong/laravel-activitylog-mongodb.svg?style=flat-square)](https://packagist.org/packages/votong/laravel-activitylog-mongodb)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-activitylog.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-activitylog)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-activitylog/run-tests.yml?branch=main&label=Tests)](https://github.com/spatie/laravel-activitylog/actions/workflows/run-tests.yml)
+[![Check & fix styling](https://github.com/spatie/laravel-activitylog/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/spatie/laravel-activitylog/actions/workflows/php-cs-fixer.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-activitylog.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-activitylog)
 
-The `votong/laravel-activitylog-mongodb` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events.
+The `votong/laravel-activitylog` package provides easy to use functions to log the activities of the users of your app. It can also automatically log model events.
 The Package stores all activity in the `activity_log` table.
-
-It is inspired from [laravel-activitylog](https://github.com/spatie/laravel-activitylog). Same code same everything but it is compatible with [laravel-mongodb](https://github.com/jenssegers/laravel-mongodb)
 
 Here's a demo of how you can use it:
 
@@ -18,13 +16,14 @@ Here's a demo of how you can use it:
 activity()->log('Look, I logged something');
 ```
 
-You can retrieve all activity using the `Votong\Activitylog\Models\Activity` model.
+You can retrieve all activity using the `Spatie\Activitylog\Models\Activity` model.
 
 ```php
 Activity::all();
 ```
 
 Here's a more advanced example:
+
 ```php
 activity()
    ->performedOn($anEloquentModel)
@@ -40,8 +39,7 @@ $lastLoggedActivity->getExtraProperty('customProperty'); //returns 'customValue'
 $lastLoggedActivity->description; //returns 'Look, I logged something'
 ```
 
-
-Here's an example on [event logging](https://docs.spatie.be/laravel-activitylog/v4/advanced-usage/logging-model-events).
+Here's an example on [event logging](https://spatie.be/docs/laravel-activitylog/advanced-usage/logging-model-events).
 
 ```php
 $newsItem->name = 'updated name';
@@ -79,26 +77,27 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Documentation
 
-You'll find the documentation on [https://docs.spatie.be/laravel-activitylog](https://docs.spatie.be/laravel-activitylog).
+You'll find the documentation on [https://spatie.be/docs/laravel-activitylog/introduction](https://spatie.be/docs/laravel-activitylog/introduction).
 
-Find yourself stuck using the package? Found a bug? Do you have general questions or suggestions for improving the activity log? Feel free to [create an issue on GitHub](https://github.com/votong/laravel-activitylog/issues), we'll try to address it as soon as possible.
+Find yourself stuck using the package? Found a bug? Do you have general questions or suggestions for improving the activity log? Feel free to [create an issue on GitHub](https://github.com/spatie/laravel-activitylog/issues), we'll try to address it as soon as possible.
 
 ## Installation
 
 You can install the package via composer:
 
-``` bash
+```bash
 composer require votong/laravel-activitylog
 ```
 
 The package will automatically register itself.
 
 You can publish the migration with:
+
 ```bash
-php artisan vendor:publish --provider="Votong\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
+php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
 ```
 
-*Note*: The default migration assumes you are using integers for your model IDs. If you are using UUIDs, or some other format, adjust the format of the subject_id and causer_id fields in the published migration before continuing.
+_Note_: The default migration assumes you are using integers for your model IDs. If you are using UUIDs, or some other format, adjust the format of the subject_id and causer_id fields in the published migration before continuing.
 
 After publishing the migration you can create the `activity_log` table by running the migrations:
 
@@ -107,8 +106,9 @@ php artisan migrate
 ```
 
 You can optionally publish the config file with:
+
 ```bash
-php artisan vendor:publish --provider="Votong\Activitylog\ActivitylogServiceProvider" --tag="activitylog-config"
+php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-config"
 ```
 
 ## Changelog
@@ -121,26 +121,26 @@ Please see [UPGRADING](UPGRADING.md) for details.
 
 ## Testing
 
-``` bash
+```bash
 composer test
 ```
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
+If you've found a bug regarding security please mail [security@spatie.be](mailto:security@spatie.be) instead of using the issue tracker.
 
 ## Credits
 
-- [Freek Van der Herten](https://github.com/freekmurze)
-- [Sebastian De Deyne](https://github.com/sebastiandedeyne)
-- [Tom Witkowski](https://github.com/Gummibeer)
-- [All Contributors](../../contributors)
+-   [Freek Van der Herten](https://github.com/freekmurze)
+-   [Sebastian De Deyne](https://github.com/sebastiandedeyne)
+-   [Tom Witkowski](https://github.com/Gummibeer)
+-   [All Contributors](../../contributors)
 
-And a special thanks to [Caneco](https://twitter.com/caneco) for the logo and [Ahmed Nagi](https://github.com/nagi1) for all the work hee put in `v4`.
+And a special thanks to [Caneco](https://twitter.com/caneco) for the logo and [Ahmed Nagi](https://github.com/nagi1) for all the work he put in `v4`.
 
 ## License
 

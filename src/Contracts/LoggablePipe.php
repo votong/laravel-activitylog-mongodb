@@ -1,9 +1,9 @@
 <?php
 
-namespace Votong\Activitylog\Contracts;
+namespace Spatie\Activitylog\Contracts;
 
 use Closure;
-use Votong\Activitylog\EventLogBag;
+use Spatie\Activitylog\EventLogBag;
 
 interface LoggablePipe
 {

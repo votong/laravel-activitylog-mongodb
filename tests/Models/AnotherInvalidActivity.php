@@ -1,13 +1,13 @@
 <?php
 
-namespace Votong\Activitylog\Test\Models;
+namespace Spatie\Activitylog\Test\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Votong\Activitylog\Contracts\Activity as ActivityContract;
+use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 
 class AnotherInvalidActivity implements ActivityContract
 {
@@ -42,12 +42,13 @@ class AnotherInvalidActivity implements ActivityContract
      * Get the extra properties with the given name.
      *
      * @param string $propertyName
+     * @param mixed $defaultValue
      *
      * @return mixed
      */
-    public function getExtraProperty(string $propertyName): mixed
+    public function getExtraProperty(string $propertyName, mixed $defaultValue = null): mixed
     {
-        return Arr::get($this->properties->toArray(), $propertyName);
+        return Arr::get($this->properties->toArray(), $propertyName, $defaultValue);
     }
 
     public function changes(): Collection
@@ -74,7 +75,7 @@ class AnotherInvalidActivity implements ActivityContract
      * Scope a query to only include activities by a given causer.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Jenssegers\Mongodb\Eloquent\Model $causer
+     * @param \Illuminate\Database\Eloquent\Model $causer
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -89,7 +90,7 @@ class AnotherInvalidActivity implements ActivityContract
      * Scope a query to only include activities for a given subject.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Jenssegers\Mongodb\Eloquent\Model $subject
+     * @param \Illuminate\Database\Eloquent\Model $subject
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

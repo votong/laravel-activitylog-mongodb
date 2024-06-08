@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog;
+namespace Spatie\Activitylog;
 
 use Closure;
 use Ramsey\Uuid\Uuid;
@@ -19,6 +19,12 @@ class LogBatch
     public function getUuid(): ?string
     {
         return $this->uuid;
+    }
+
+    public function setBatch(string $uuid): void
+    {
+        $this->uuid = $uuid;
+        $this->transactions = 1;
     }
 
     public function withinBatch(Closure $callback): mixed

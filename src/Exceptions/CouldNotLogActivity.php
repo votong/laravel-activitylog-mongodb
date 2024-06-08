@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog\Exceptions;
+namespace Spatie\Activitylog\Exceptions;
 
 use Exception;
 

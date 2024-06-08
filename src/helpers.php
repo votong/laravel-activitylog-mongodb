@@ -1,7 +1,7 @@
 <?php
 
-use Votong\Activitylog\ActivityLogger;
-use Votong\Activitylog\ActivityLogStatus;
+use Spatie\Activitylog\ActivityLogger;
+use Spatie\Activitylog\ActivityLogStatus;
 
 if (! function_exists('activity')) {
     function activity(string $logName = null): ActivityLogger

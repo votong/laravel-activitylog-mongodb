@@ -1,8 +1,8 @@
 <?php
 
-namespace Votong\Activitylog\Test\Models;
+namespace Spatie\Activitylog\Test\Models;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
@@ -10,8 +10,13 @@ class Article extends Model
 
     protected $guarded = [];
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getOwnerNameAttribute()
+    {
+        return $this->user?->name;
     }
 }

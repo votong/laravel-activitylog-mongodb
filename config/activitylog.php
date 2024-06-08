@@ -21,7 +21,7 @@ return [
 
     /*
      * You can specify an auth driver here that gets user models.
-     * If this is null we'll use the default Laravel auth driver.
+     * If this is null we'll use the current Laravel auth driver.
      */
     'default_auth_driver' => null,
 
@@ -32,10 +32,10 @@ return [
 
     /*
      * This model will be used to log activity.
-     * It should be implements the Votong\Activitylog\Contracts\Activity interface
-     * and extend Jenssegers\Mongodb\Eloquent\Model.
+     * It should implement the Spatie\Activitylog\Contracts\Activity interface
+     * and extend Illuminate\Database\Eloquent\Model.
      */
-    'activity_model' => \Votong\Activitylog\Models\Activity::class,
+    'activity_model' => \Spatie\Activitylog\Models\Activity::class,
 
     /*
      * This is the name of the table that will be created by the migration and
@@ -46,7 +46,7 @@ return [
     /*
      * This is the database connection that will be used by the migration and
      * the Activity model shipped with this package. In case it's not set
-     * Laravel database.default will be used instead.
+     * Laravel's database.default will be used instead.
      */
     'database_connection' => env('ACTIVITY_LOGGER_DB_CONNECTION'),
 ];

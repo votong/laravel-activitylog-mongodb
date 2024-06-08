@@ -1,47 +1,34 @@
 <?php
 
-namespace Votong\Activitylog\Test;
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Test\Models\CustomDatabaseConnectionOnActivityModel;
 
-use Votong\Activitylog\Models\Activity;
-use Votong\Activitylog\Test\Models\CustomDatabaseConnectionOnActivityModel;
+it('uses the database connection from the configuration', function () {
+    $model = new Activity();
 
-class CustomDatabaseConnectionActivityModelTest extends TestCase
-{
-    /** @test */
-    public function it_uses_the_database_connection_from_the_configuration()
-    {
-        $model = new Activity();
+    expect(config('activitylog.database_connection'))->toEqual($model->getConnectionName());
+});
 
-        $this->assertEquals($model->getConnectionName(), config('activitylog.database_connection'));
-    }
+it('uses a custom database connection', function () {
+    $model = new Activity();
 
-    /** @test */
-    public function it_uses_a_custom_database_connection()
-    {
-        $model = new Activity();
+    $model->setConnection('custom_sqlite');
 
-        $model->setConnection('custom_sqlite');
+    $this->assertNotEquals($model->getConnectionName(), config('activitylog.database_connection'));
+    expect('custom_sqlite')->toEqual($model->getConnectionName());
+});
 
-        $this->assertNotEquals($model->getConnectionName(), config('activitylog.database_connection'));
-        $this->assertEquals($model->getConnectionName(), 'custom_sqlite');
-    }
+it('uses the default database connection when the one from configuration is null', function () {
+    app()['config']->set('activitylog.database_connection', null);
 
-    /** @test */
-    public function it_uses_the_default_database_connection_when_the_one_from_configuration_is_null()
-    {
-        $this->app['config']->set('activitylog.database_connection', null);
+    $model = new Activity();
 
-        $model = new Activity();
+    expect($model->getConnection())->toBeInstanceOf('Illuminate\Database\SQLiteConnection');
+});
 
-        $this->assertInstanceOf('Illuminate\Database\SQLiteConnection', $model->getConnection());
-    }
+it('uses the database connection from model', function () {
+    $model = new CustomDatabaseConnectionOnActivityModel();
 
-    /** @test */
-    public function it_uses_the_database_connection_from_model()
-    {
-        $model = new CustomDatabaseConnectionOnActivityModel();
-
-        $this->assertNotEquals($model->getConnectionName(), config('activitylog.database_connection'));
-        $this->assertEquals($model->getConnectionName(), 'custom_connection_name');
-    }
-}
+    $this->assertNotEquals($model->getConnectionName(), config('activitylog.database_connection'));
+    expect('custom_connection_name')->toEqual($model->getConnectionName());
+});

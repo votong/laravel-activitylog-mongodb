@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog\Test\Casts;
+namespace Spatie\Activitylog\Test\Casts;
 
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;

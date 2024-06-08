@@ -11,7 +11,7 @@ This is the most basic way to log activity:
 activity()->log('Look mum, I logged something');
 ```
 
-You can retrieve the activity using the `Votong\Activitylog\Models\Activity` model.
+You can retrieve the activity using the `Spatie\Activitylog\Models\Activity` model.
 
 ```php
 $lastActivity = Activity::all()->last(); //returns the last logged activity
@@ -54,7 +54,7 @@ The `causedBy()`-function has a shorter alias named: `by()`
 
 If you're not using `causedBy()` the package will automatically use the logged in user.
 
-If you don't want to associate a model as causer of activity, you can use `causedByAnonynmous()` (or the shorter alias: `byAnonymous()`).
+If you don't want to associate a model as causer of activity, you can use `causedByAnonymous()` (or the shorter alias: `byAnonymous()`).
 
 ## Setting custom properties
 
@@ -103,7 +103,7 @@ activity()
 You can use the `tap()` method to fill properties and add custom fields before the activity is saved.
 
 ```php
-use Votong\Activitylog\Contracts\Activity;
+use Spatie\Activitylog\Contracts\Activity;
 
 activity()
    ->causedBy($userModel)

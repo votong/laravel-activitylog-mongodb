@@ -1,18 +1,19 @@
 <?php
 
-namespace Votong\Activitylog\Facades;
+namespace Spatie\Activitylog\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Votong\Activitylog\LogBatch as ActivityLogBatch;
+use Spatie\Activitylog\LogBatch as ActivityLogBatch;
 
 /**
  * @method static string getUuid()
  * @method static mixed withinBatch(\Closure $callback)
  * @method static void startBatch()
+ * @method static void setBatch(string $uuid): void
  * @method static bool isOpen()
  * @method static void endBatch()
  *
- * @see \Votong\Activitylog\LogBatch
+ * @see \Spatie\Activitylog\LogBatch
  */
 class LogBatch extends Facade
 {

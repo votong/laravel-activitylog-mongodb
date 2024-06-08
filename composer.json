@@ -1,15 +1,14 @@
 {
-    "name": "votong/laravel-activitylog-mongodb",
+    "name": "spatie/laravel-activitylog",
     "description": "A very simple activity logger to monitor the users of your website or application",
+    "license": "MIT",
     "keywords": [
-        "votong",
+        "spatie",
         "log",
         "user",
         "activity",
         "laravel"
     ],
-    "homepage": "https://github.com/votong/laravel-activitylog-mongodb",
-    "license": "MIT",
     "authors": [
         {
             "name": "Freek Van der Herten",
@@ -30,33 +29,25 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/spatie/activitylog",
     "require": {
-        "php": "^7|^8",
+        "php": "^8.1",
         "illuminate/config": "^8.0 || ^9.0 || ^10.0 || ^11.0",
         "illuminate/database": "^8.69 || ^9.27 || ^10.0 || ^11.0",
         "illuminate/support": "^8.0 || ^9.0 || ^10.0 || ^11.0",
-        "spatie/laravel-package-tools": "^1.6.3",
-        "jenssegers/mongodb": "^3|^4"
+        "mongodb/laravel-mongodb": "^4.4",
+        "spatie/laravel-package-tools": "^1.6.3"
     },
     "require-dev": {
         "ext-json": "*",
         "orchestra/testbench": "^6.23 || ^7.0 || ^8.0 || ^9.0",
-        "pestphp/pest": "^1.20 || ^2.0",
-        "phpunit/phpunit": "^9|^10|^11"
+        "pestphp/pest": "^1.20 || ^2.0"
     },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Votong\\Activitylog\\ActivitylogServiceProvider"
-            ]
-        }
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Votong\\Activitylog\\": "src"
+            "Spatie\\Activitylog\\": "src"
         },
         "files": [
             "src/helpers.php"
@@ -64,12 +55,23 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Votong\\Activitylog\\Test\\": "tests"
+            "Spatie\\Activitylog\\Test\\": "tests"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Spatie\\Activitylog\\ActivitylogServiceProvider"
+            ]
+        }
+    },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/pest"
     }
 }

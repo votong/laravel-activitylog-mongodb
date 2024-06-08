@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog;
+namespace Spatie\Activitylog;
 
 use Illuminate\Contracts\Config\Repository;
 

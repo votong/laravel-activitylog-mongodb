@@ -1,6 +1,6 @@
 <?php
 
-namespace Votong\Activitylog;
+namespace Spatie\Activitylog;
 
 use Closure;
 
@@ -22,6 +22,8 @@ class LogOptions
 
     public array $dontLogIfAttributesChangedOnly = [];
 
+    public array $attributeRawValues = [];
+
     public ?Closure $descriptionForEvent = null;
 
     /**
@@ -41,7 +43,7 @@ class LogOptions
     }
 
     /**
-     * log changes to all the $guarded attributes of the model.
+     * Log all attributes that are not listed in $guarded.
      */
     public function logUnguarded(): self
     {
@@ -111,7 +113,7 @@ class LogOptions
     }
 
     /**
-     * Dont store empty logs. Storing empty logs can happen when you only
+     * Don't store empty logs. Storing empty logs can happen when you only
      * want to log a certain attribute but only another changes.
      */
     public function dontSubmitEmptyLogs(): self
@@ -135,7 +137,7 @@ class LogOptions
     /**
      * Customize log name.
      */
-    public function useLogName(string $logName): self
+    public function useLogName(?string $logName): self
     {
         $this->logName = $logName;
 
@@ -148,6 +150,16 @@ class LogOptions
     public function setDescriptionForEvent(Closure $callback): self
     {
         $this->descriptionForEvent = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Exclude these attributes from being casted.
+     */
+    public function useAttributeRawValues(array $attributes): self
+    {
+        $this->attributeRawValues = $attributes;
 
         return $this;
     }

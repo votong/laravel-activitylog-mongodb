@@ -4,7 +4,7 @@
 
 # Laravel Activity Log Art
 
-The logo was inspired by the [Votong](https://votong.be) brand, and the well known minimal design of Laravel packages.
+The logo was inspired by the [Spatie](https://spatie.be) brand, and the well known minimal design of Laravel packages.
 
 ## Fonts
 

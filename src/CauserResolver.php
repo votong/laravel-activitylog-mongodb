@@ -1,18 +1,18 @@
 <?php
 
-namespace Votong\Activitylog;
+namespace Spatie\Activitylog;
 
 use Closure;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Config\Repository;
-use Jenssegers\Mongodb\Eloquent\Model;
-use Votong\Activitylog\Exceptions\CouldNotLogActivity;
+use MongoDB\Laravel\Eloquent\Model;
+use Spatie\Activitylog\Exceptions\CouldNotLogActivity;
 
 class CauserResolver
 {
     protected AuthManager $authManager;
 
-    protected string $authDriver;
+    protected string | null $authDriver;
 
     protected Closure | null $resolverOverride = null;
 
@@ -22,7 +22,7 @@ class CauserResolver
     {
         $this->authManager = $authManager;
 
-        $this->authDriver = $config['activitylog']['default_auth_driver'] ?? $this->authManager->getDefaultDriver();
+        $this->authDriver = $config['activitylog']['default_auth_driver'];
     }
 
     public function resolve(Model | int | string | null $subject = null): ?Model
