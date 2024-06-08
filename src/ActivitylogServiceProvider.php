@@ -7,8 +7,8 @@ use VoTong\Activitylog\Contracts\Activity;
 use VoTong\Activitylog\Contracts\Activity as ActivityContract;
 use VoTong\Activitylog\Exceptions\InvalidConfiguration;
 use VoTong\Activitylog\Models\Activity as ActivityModel;
-use VoTong\LaravelPackageTools\Package;
-use VoTong\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class ActivitylogServiceProvider extends PackageServiceProvider
 {
