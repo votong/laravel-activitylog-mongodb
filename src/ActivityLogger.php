@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace VoTong\Activitylog;
 
 use Closure;
 use DateTimeInterface;
@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\Macroable;
-use Spatie\Activitylog\Contracts\Activity as ActivityContract;
+use VoTong\Activitylog\Contracts\Activity as ActivityContract;
 
 class ActivityLogger
 {

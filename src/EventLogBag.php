@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace VoTong\Activitylog;
 
 use MongoDB\Laravel\Eloquent\Model;
 

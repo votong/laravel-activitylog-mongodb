@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\Activitylog\Models;
+namespace VoTong\Activitylog\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use MongoDB\Laravel\Eloquent\Builder;
 use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Spatie\Activitylog\Contracts\Activity as ActivityContract;
+use VoTong\Activitylog\Contracts\Activity as ActivityContract;
 
 /**
- * Spatie\Activitylog\Models\Activity.
+ * VoTong\Activitylog\Models\Activity.
  *
  * @property int $id
  * @property string|null $log_name
@@ -28,15 +28,15 @@ use Spatie\Activitylog\Contracts\Activity as ActivityContract;
  * @property-read \Illuminate\Support\Collection $changes
  * @property-read \MongoDB\Laravel\Eloquent\Model|\Eloquent $subject
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity causedBy(\MongoDB\Laravel\Eloquent\Model $causer)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity forBatch(string $batchUuid)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity forEvent(string $event)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity forSubject(\MongoDB\Laravel\Eloquent\Model $subject)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity hasBatch()
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity inLog($logNames)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity query()
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity causedBy(\MongoDB\Laravel\Eloquent\Model $causer)
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity forBatch(string $batchUuid)
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity forEvent(string $event)
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity forSubject(\MongoDB\Laravel\Eloquent\Model $subject)
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity hasBatch()
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity inLog($logNames)
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity newModelQuery()
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity newQuery()
+ * @method static \MongoDB\Laravel\Eloquent\Builder|\VoTong\Activitylog\Models\Activity query()
  */
 class Activity extends Model implements ActivityContract
 {

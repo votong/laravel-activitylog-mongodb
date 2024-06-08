@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace VoTong\Activitylog;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
-use Illuminate\Database\Eloquent\Builder;
+use MongoDB\Laravel\Eloquent\Builder;
 
 class CleanActivitylogCommand extends Command
 {

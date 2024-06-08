@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Activitylog\Contracts;
+namespace VoTong\Activitylog\Contracts;
 
-use Illuminate\Database\Eloquent\Builder;
+use MongoDB\Laravel\Eloquent\Builder;
 use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;

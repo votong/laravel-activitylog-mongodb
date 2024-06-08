@@ -1,14 +1,14 @@
 <?php
 
-namespace Spatie\Activitylog;
+namespace VoTong\Activitylog;
 
 use MongoDB\Laravel\Eloquent\Model;
-use Spatie\Activitylog\Contracts\Activity;
-use Spatie\Activitylog\Contracts\Activity as ActivityContract;
-use Spatie\Activitylog\Exceptions\InvalidConfiguration;
-use Spatie\Activitylog\Models\Activity as ActivityModel;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use VoTong\Activitylog\Contracts\Activity;
+use VoTong\Activitylog\Contracts\Activity as ActivityContract;
+use VoTong\Activitylog\Exceptions\InvalidConfiguration;
+use VoTong\Activitylog\Models\Activity as ActivityModel;
+use VoTong\LaravelPackageTools\Package;
+use VoTong\LaravelPackageTools\PackageServiceProvider;
 
 class ActivitylogServiceProvider extends PackageServiceProvider
 {

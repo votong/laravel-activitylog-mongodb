@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Activitylog\Facades;
+namespace VoTong\Activitylog\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Spatie\Activitylog\LogBatch as ActivityLogBatch;
+use VoTong\Activitylog\LogBatch as ActivityLogBatch;
 
 /**
  * @method static string getUuid()
@@ -13,7 +13,7 @@ use Spatie\Activitylog\LogBatch as ActivityLogBatch;
  * @method static bool isOpen()
  * @method static void endBatch()
  *
- * @see \Spatie\Activitylog\LogBatch
+ * @see \VoTong\Activitylog\LogBatch
  */
 class LogBatch extends Facade
 {

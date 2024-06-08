@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Activitylog\Traits;
+namespace VoTong\Activitylog\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Spatie\Activitylog\ActivitylogServiceProvider;
+use VoTong\Activitylog\ActivitylogServiceProvider;
 
 trait CausesActivity
 {

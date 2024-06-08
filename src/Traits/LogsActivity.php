@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Activitylog\Traits;
+namespace VoTong\Activitylog\Traits;
 
 use Carbon\CarbonInterval;
 use DateInterval;
@@ -11,12 +11,12 @@ use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Spatie\Activitylog\ActivityLogger;
-use Spatie\Activitylog\ActivitylogServiceProvider;
-use Spatie\Activitylog\ActivityLogStatus;
-use Spatie\Activitylog\Contracts\LoggablePipe;
-use Spatie\Activitylog\EventLogBag;
-use Spatie\Activitylog\LogOptions;
+use VoTong\Activitylog\ActivityLogger;
+use VoTong\Activitylog\ActivitylogServiceProvider;
+use VoTong\Activitylog\ActivityLogStatus;
+use VoTong\Activitylog\Contracts\LoggablePipe;
+use VoTong\Activitylog\EventLogBag;
+use VoTong\Activitylog\LogOptions;
 
 trait LogsActivity
 {
